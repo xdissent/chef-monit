@@ -1,0 +1,4 @@
+check process <%= @name %>
+  <% unless @without_pid %>with pidfile "<%= @pid || "/var/run/#{@name}.pid" %>"<% end %>
+  start program = "/etc/init.d/<%= @name %> start"
+  stop program = "/etc/init.d/<%= @name %> stop"

@@ -5,7 +5,7 @@ if platform?("ubuntu")
     source "monit.default"
     owner "root"
     group "root"
-    mode 0644
+    mode "0644"
   end
 end
 
@@ -18,15 +18,15 @@ end
 template "/etc/monit/monitrc" do
   owner "root"
   group "root"
-  mode 0700
-  source 'monitrc.erb'
-  notifies :restart, resources(:service => "monit"), :delayed
+  mode "0700"
+  source "monitrc.erb"
+  notifies :restart, "service[monit]", :delayed
 end
 
 directory "/etc/monit/conf.d/" do
-  owner  'root'
-  group 'root'
-  mode 0755
+  owner  "root"
+  group "root"
+  mode "0755"
   action :create
   recursive true
 end
